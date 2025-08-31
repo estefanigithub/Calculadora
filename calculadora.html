@@ -1,49 +1,163 @@
-<!DOCTYPE html>
-<html lang= "pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora</title>
-</head> 
-<body>
+    <link rel="stylesheet" href="calculadora.css" />
+  </head>
+  <body>
+    <h1>Calculadora feita com HTML, CSS, JAVA SCRIPT</h1>
+    <h1>Faça seu cálculo</h1>
+
     <div class="Fundo">
-        <h1> Calculadora feita com HTML, CSS, JAVA SCRIPT. </h1>
-        <div class= "Calculadora" >
-            <h1> Faça seu cálculo </h1>
-    <table>
-             <input type="text" id="display" disabled />
-    <div class="botoes">
-    <tr>
-     <td><button onclick="limpar()">C</button></td>
-     <td><button onclick="inserir('/')">/</button></td>
-     <td><button onclick="inserir('*')">*</button></td>
-     <td><button onclick="inserir('-')">-</button></td>
-    </tr>
+      <div class="Calculadora">
+        <!-- Modal Científico Lateral -->
+<div id="modalCientifico" class="modal-cientifico">
+  <div class="conteudo-cientifico">
+    <button onclick="inserir('Math.sin(')">sin</button>
+    <button onclick="inserir('Math.cos(')">cos</button>
+    <button onclick="inserir('Math.tan(')">tan</button>
+    <button onclick="inserir('Math.sqrt(')">√</button>
+    <button onclick="inserir('(')">(</button>
+    <button onclick="inserir(')')">)</button>
+    <button onclick="fecharModal()">Fechar</button>
+  </div>
+</div>
 
-    <tr> 
-      <td><button onclick="inserir('7')">7</button></td>
-      <td><button onclick="inserir('8')">8</button></td>
-      <td><button onclick="inserir('9')">9</button></td>
-      <td><button onclick="inserir('+')">+</button></td>
-    </tr>
+        <table>
+          <tr>
+            <td colspan="4" style="text-align: center">
+              <input class="visor" type="text" id="display" disabled />
+            </td>
+          </tr>
+          <tr id="linha-cientifica" style="display: none">
+  <div class="buttons-scientific hidden">
+    ...
+  </div>
+</tr>
+              <td>
+                <button
+                  onclick="inserir('Math.sin(')"
+                  title="Exemplo: sen(0) = 0"
+                >
+                  sin
+                </button>
+              </td>
+              <td>
+                <button
+                  onclick="inserir('Math.cos(')"
+                  title="Exemplo: cos(0) = 1"
+                >
+                  cos
+                </button>
+              </td>
+              <td>
+                <button
+                  onclick="inserir('Math.tan(')"
+                  title="Exemplo: tan(0) = 0"
+                >
+                  tan
+                </button>
+              </td>
+              <td>
+                <button onclick="inserir('Math.sqrt(')" title="Exemplo: √9 = 3">
+                  √
+                </button>
+              </td>
+              <td>
+                <button onclick="inserir('(')" title="Abrir parêntese">
+                  (
+                </button>
+              </td>
+              <td>
+                <button onclick="inserir(')')" title="Fechar parêntese">
+                  )
+                </button>
+              </td>
+            </div>
+          </tr>
+<div class="buttons-basic">
+          <tr>
+            <td><button onclick="limpar()">C</button></td>
+            <td>
+              <button onclick="apagar()" aria-label="Apagar">
+                <svg
+                  class="icon-apagar"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20 6H9a2 2 0 0 0-1.6.8l-5 7a2 2 0 0 0 0 2.4l5 7A2 2 0 0 0 9 22h11a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
+                  />
+                  <line x1="12" y1="10" x2="17" y2="15" />
+                  <line x1="17" y1="10" x2="12" y2="15" />
+                </svg>
+              </button>
+            </td>
+            <td><button onclick="inserir('%')">%</button></td>
+            <td><button onclick="inserir('/')">/</button></td>
+          </tr>
 
-    <tr>
-      <td><button onclick="inserir('4')">4</button></td>
-      <td><button onclick="inserir('5')">5</button></td>
-      <td><button onclick="inserir('6')">6</button></td>
-    </tr>
+          <tr>
+            <td>
+              <button onclick="inserir('7')" title="Exemplo: 7+2=9">7</button>
+            </td>
+            <td>
+              <button onclick="inserir('8')" title="Exemplo: 8-3=5">8</button>
+            </td>
+            <td>
+              <button onclick="inserir('9')" title="Exemplo: 9/3=3">9</button>
+            </td>
+            <td>
+              <button onclick="inserir('x')" title="Exemplo: 2x3=6">x</button>
+            </td>
+          </tr>
 
-    <tr>
-      <td><button onclick="inserir('1')">1</button></td>
-      <td><button onclick="inserir('2')">2</button></td>
-      <td><button onclick="inserir('3')">3</button></td>
-      <td><button onclick="inserir('0')">0</button></td>
-      <td><button onclick="inserir('.')">.</button></td>
-      <td><button onclick="calcular()">=</button></td>
-    </tr>
+          <tr>
+            <td><button onclick="inserir('4')">4</button></td>
+            <td><button onclick="inserir('5')">5</button></td>
+            <td><button onclick="inserir('6')">6</button></td>
+            <td>
+              <button onclick="inserir('+')" title="Exemplo: 1+1=2">+</button>
+            </td>
+          </tr>
 
-    </table>
-        </div>
+          <tr>
+            <td><button onclick="inserir('1')">1</button></td>
+            <td><button onclick="inserir('2')">2</button></td>
+            <td><button onclick="inserir('3')">3</button></td>
+            <td>
+              <button onclick="inserir('-')" title="Exemplo: 5-2=3">-</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <button onclick="alternarCientifica()">
+                <img
+                  src="calculador_antiga.png"
+                  alt="Científica"
+                  style="width: 24px; height: 24px"
+                />
+              </button>
+            </td>
+            <td><button onclick="inserir('0')">0</button></td>
+            <td>
+              <button onclick="inserir('.')" title="Exemplo: 3.14">.</button>
+            </td>
+            <td><button onclick="calcular()">=</button></td>
+          </tr>
+        </table>
+      </div>
     </div>
-</body>
+  </body>
+  <script src="calculadora.js"></script>
 </html>
